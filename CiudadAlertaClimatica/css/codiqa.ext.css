@@ -1,0 +1,138 @@
+/* Put your custom CSS here */
+
+.panel-content {
+	padding:15px;
+}
+
+
+
+.map{
+	width: auto;
+	height: auto;
+	border:1px solid #E9EAF0;
+	box-shadow: 0px 10px 5px #888888;			
+}			
+
+div[id="conteinerMapas"]{
+	height: auto;
+}
+
+
+
+
+div[id="conteinerMapas"] > div[id="map1"]{
+    border: 3px solid;
+    height: 215px;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: auto;
+}
+
+div[id="conteinerMapas"] > div[id="map2"]{
+    border: 3px solid;
+    height: 333px;
+    margin-left: 10px;
+    margin-top: 6px;
+    width: auto;
+}
+
+li:hover{
+	cursor:pointer;
+	background-color:#D1D2D5;
+	color : blue;
+}
+
+li[id="template"]{
+	display: none;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 12px;
+  width: 200px;
+}
+ 
+li {
+  font: 200 17px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+ 
+li:last-child {
+  border: none;
+}
+ 
+li{
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 200px;
+ 
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+
+.panelColores{
+	border: 1px solid #D1D2D5;
+	height: 20px;
+	width: 338px;
+	position: absolute;
+	top: 761px;
+	left: 26px;
+}
+
+
+.comunasyzonas{
+	margin-left: 12px;
+}
+
+.letrasReferencia{
+	position : absolute;
+    width : 86px;
+    height : 20px;
+}
+
+.rojo{
+    background: none repeat scroll 0 0 #FF0000;
+	height: 15px;
+	left: 1px;
+	top: 2px;
+	position: absolute;
+	width: 15px;
+}
+
+.amarillo{
+   	background: none repeat scroll 0 0 #FFFF00;
+	height: 15px;
+	left: 171px;
+	top: 2px;
+	position: absolute;
+	width: 15px;
+}
+
+.rojoLetras{
+    left: 20px;
+	position: absolute;
+}
+
+.amarilloLetras{
+   left: 191px;
+	position: absolute;
+	width: 142px;
+}
+
+.tituloComunas{
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.tituloZonas{
+	margin-left: 10px;
+	margin-top: 12px;
+	margin-bottom: 5px;
+}
