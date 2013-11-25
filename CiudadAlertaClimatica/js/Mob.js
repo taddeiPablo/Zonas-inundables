@@ -91,12 +91,16 @@ function initialize() {
  */
 function cargarComunas(){
 	try{
-		Comunas(function(data){
-		 	arr = jQuery.map(data, function(item, i){
-				var option = $('#op1').clone();
-				option.removeAttr('id');
-				option.text("Comuna     "+item.Comuna+"");
-				$("#selectable").append(option);
+		getConfiguracion(function(data){
+			var url = data.text();
+			console.log(url);
+			Comunas(url,function(data){
+			 	arr = jQuery.map(data, function(item, i){
+					var option = $('#op1').clone();
+					option.removeAttr('id');
+					option.text("Comuna     "+item.Comuna+"");
+					$("#selectable").append(option);
+				});
 			});
 		});
 	}catch(Error){
@@ -113,32 +117,35 @@ function cargarComunas(){
  */
 function cargarBarrios(idComuna){
 	try{
-		Barrios(idComuna,function(data){
-			arr = jQuery.map(data, function(item, i){
-				var str = item.Barrios.search("-");
-				if(str != -1){
-					getLista(item.Barrios);
-				}else{
-					$('#ul1 li').remove();
-					var li = $('#template').clone();
-					li.removeAttr('id');
-					li.append(item.Barrios);
-					$('#ul1').append(li);
-				}
-					
-				var dataArray = [];
-				var cont = 0;
-				var obj = jQuery.parseJSON(item.GeoJson);
+		getConfiguracion(function(data){
+			var url = data.text();
+			Barrios(url,idComuna,function(data){
+				arr = jQuery.map(data, function(item, i){
+					var str = item.Barrios.search("-");
+					if(str != -1){
+						getLista(item.Barrios);
+					}else{
+						$('#ul1 li').remove();
+						var li = $('#template').clone();
+						li.removeAttr('id');
+						li.append(item.Barrios);
+						$('#ul1').append(li);
+					}
+						
+					var dataArray = [];
+					var cont = 0;
+					var obj = jQuery.parseJSON(item.GeoJson);
 
-				$.each(obj.coordinates, function( key, value ) {
-					$.each(value,function(key1,value1){
-						$.each(value1,function(key2,value2){
-							dataArray[cont] = {'latitude':value2[1],'longitude':value2[0]};
-							cont++;
+					$.each(obj.coordinates, function( key, value ) {
+						$.each(value,function(key1,value1){
+							$.each(value1,function(key2,value2){
+								dataArray[cont] = {'latitude':value2[1],'longitude':value2[0]};
+								cont++;
+							});
 						});
 					});
+					google.maps.event.addDomListener(window, 'load',marcarPosicionComuna(item.Latitude,item.Longitude,dataArray));
 				});
-				google.maps.event.addDomListener(window, 'load',marcarPosicionComuna(item.Latitude,item.Longitude,dataArray));
 			});
 		});
 	}catch(Error){
@@ -158,26 +165,29 @@ function cargarZonasInundacion(barrio){
 		
 		var barrio = barrio_zonas(barrio);
 		
-		ZonasInundables(barrio,function(data){
-			if(data != null){
-				arr = jQuery.map(data, function(item, i){
-					var afectacion = item.Afectacion;
-					var xml = item.Geomatry,
-					xmlDoc = $.parseXML( xml ),
-					$xml = $( xmlDoc ),
-					$title = $xml.find( "coordinates" );
-					var arrayLatLgn = $title.text().split('|||');
-					var dataArray = [];
-					console.log(arrayLatLgn);	
-					for (i = 0, l = arrayLatLgn.length; i < l; i +=1) {
-						dataArray[i] = arrayLatLgn[i].split(',');
-					}
-							
-					google.maps.event.addDomListener(window, 'load',marcarZonas_de_Inundacion(dataArray,afectacion));
-				});
-			}else{
-				getPopUp_Mensaje();
-			}
+		getConfiguracion(function(data){
+			var url = data.text();
+			ZonasInundables(url,barrio,function(data){
+				if(data != null){
+					arr = jQuery.map(data, function(item, i){
+						var afectacion = item.Afectacion;
+						var xml = item.Geomatry,
+						xmlDoc = $.parseXML( xml ),
+						$xml = $( xmlDoc ),
+						$title = $xml.find( "coordinates" );
+						var arrayLatLgn = $title.text().split('|||');
+						var dataArray = [];
+						console.log(arrayLatLgn);	
+						for (i = 0, l = arrayLatLgn.length; i < l; i +=1) {
+							dataArray[i] = arrayLatLgn[i].split(',');
+						}
+								
+						google.maps.event.addDomListener(window, 'load',marcarZonas_de_Inundacion(dataArray,afectacion));
+					});
+				}else{
+					getPopUp_Mensaje();
+				}
+			});
 		});
 	}catch(Error){
 		alert("Error : Cod-1004" + Error);

@@ -3,33 +3,31 @@
  * METODOS QUE NOS DEVUELVEN LA DATA.
 */
 
-
-
+var informacion = null;
 
 /**
  * Consumo del servicio que nos traera las
  * comunas. Cod-1002.
  * COD - 1002
  */
-function Comunas(callback){
+function Comunas(servicesUrl,callback){
 	try{
 		var dataInfo;
-		console.log("si entro aqui en el servicio");
 		var datos = {
 			"method":"getNumComunas"	
 		};
-		
+			
 		$.ajax({
 			cache: false,
 			data : datos,
-			url :'http://localhost/ServicioCABA/View.php',
+			url : servicesUrl + '/ServicioCABA/View.php',
 			type :'post',
 			dataType:'json',
 			timeout: 5000,
 			success : function(data){
 				callback.call(this,data);
 			}
-		});	
+		});
 	}catch(Error){
 		alert("Error : cod-1002" + Error);
 	}
@@ -41,7 +39,7 @@ function Comunas(callback){
  * @param idComuna
  * COD - 1003
  */
-function Barrios(idComuna,callback){
+function Barrios(ServicesUrl,idComuna,callback){
 	try{
 		var datos = {
 			"method":"getBarriosComunas",
@@ -51,7 +49,7 @@ function Barrios(idComuna,callback){
 		$.ajax({
 			cache: false,
 			data : datos,
-			url : 'http://localhost/ServicioCABA/View.php',
+			url : ServicesUrl + '/ServicioCABA/View.php',
 			type :'post',
 			dataType:'json',
 			timeout: 5000,
@@ -70,7 +68,7 @@ function Barrios(idComuna,callback){
  * @param barrio
  * COD - 1004
  */
-function ZonasInundables(barrio,callback){
+function ZonasInundables(ServicesUrl,barrio,callback){
 	try{
 		
 		var datos = {
@@ -81,7 +79,7 @@ function ZonasInundables(barrio,callback){
 		$.ajax({
 			cache: false,
 			data : datos,
-			url :'http://localhost/ServicioCABA/View.php',
+			url : ServicesUrl +'/ServicioCABA/View.php',
 			type :'post',
 			dataType:'json',
 			timeout: 5000,
@@ -94,6 +92,21 @@ function ZonasInundables(barrio,callback){
 	}
 }
 
+/**
+ *Lectura del archivo de configuracion de la aplicacion
+ *lo que recuperamos es la ruta hacia el webservices
+ * @param callback
+ */
+function getConfiguracion(callback){
+	try{
+		$.post("../configurations/webconfig.xml", function (xml) {
+			var hijo = $(xml).children();
+			callback.call(this,hijo);
+		});
+	}catch(Error){
+		alert("Error : Cod-1005" + Error);
+	}
+}
 
 
 
