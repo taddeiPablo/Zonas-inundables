@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="js/libs/modernizr-2.0.6.min.js"></script>
+  		<script>
+  			$(function(){
+  				
+  				var widthNavigator = $(window).width();
+  				var heightNavigator = $(window).height();
+  				
+  				if(widthNavigator < 980 && heightNavigator < 488){
+  					window.location.href = "mobile/index.html";
+  				}else{
+  					window.location.href = "web/index.html";
+  				}
+  			});
+  		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
