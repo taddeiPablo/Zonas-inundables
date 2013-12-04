@@ -75,9 +75,9 @@
 		}
 		
 		/***
-		 * 
+		 * ESTA FUNCION SOLO HEMOS CAMBIADO LO QUE NECESITAMOS QUE DEVUELVA....
 		 * */
-		public function getBarriosComunas($numComuna){
+		public function getBarriosComunas(){
 			try{
 				$ars = null;
 				$fila = 0;
@@ -86,9 +86,10 @@
 						$numero = count($datos);
 						$fila++;
 						if($fila > 1){
-							if($datos[3] == $numComuna){
-								$ars[] = array("Barrios" => "$datos[0]","Longitude"=>"$datos[4]","Latitude"=>"$datos[5]","GeoJson"=>"$datos[6]");		
-							}						
+							//if($datos[3] == $numComuna){
+								//$ars[] = array("Barrios" => "$datos[0]","Longitude"=>"$datos[4]","Latitude"=>"$datos[5]","GeoJson"=>"$datos[6]");	
+								$ars[] = array("Barrios" => "$datos[0]");	
+							//}						
 						}
 					}
 					fclose($gestor);	
@@ -124,7 +125,9 @@
 			}
 		}
 		
-		/****/
+		/**
+		 * ESTA FUNCION NO RESIBE CAMBIOS...
+		 * **/
 		public function getZonasBarrios($barrio){
 			try{
 				$ars = null;

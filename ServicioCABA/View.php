@@ -17,7 +17,7 @@
 		echo json_encode($data->getNumComuna());
 	}elseif($_GET['method'] == 'getBarriosComunas'){
 		$data = DataConnection::getInstance();
-		echo json_encode($data->getBarriosComunas($_GET['var']));
+		echo json_encode($data->getBarriosComunas());
 	}elseif($_GET['method'] == 'getZonasBarrios'){
 		$data = DataConnection::getInstance();
 		echo json_encode($data->getZonasBarrios($_GET['var']));
