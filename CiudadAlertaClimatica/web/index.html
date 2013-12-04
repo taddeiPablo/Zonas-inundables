@@ -1,148 +1,55 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  	<meta charset="utf-8">
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  	<title>Home</title>
-  	<meta name="description" content="">
-  	<meta name="author" content="">
-  	<meta name="viewport" content="width=device-width,initial-scale=1">
-  	<link rel="stylesheet" href="../css/styleSite.css">
-  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-	<script defer src="../js/script.js"></script>
-	<script src="../js/Web.js"></script>
- </head>
- <body>
- <div id="container">
-  <header>
-	<div id="banner" class="banner">
-		<div class="images">
-			<!--imagenes -->
-		</div>
-		<div class="parteInferiror">
-			<!--inferior -->
-		</div>
-	</div>
-   </header>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>index</title>
+  <meta name="description" content="">
+  <meta name="author" content="pablo">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/styleSite.css" />
+</head>
 
-    <div id="main" role="main">
-		<div>
-			<center><h4>ZONAS INUNDABLES</h4></center>
-			<div id="panelClima">
-				<div id="con">
-					<div id="mensaje">ESTADO DEL TIEMPO EN BUENOS AIRES</div>
-   					<div id="img1">
-      					<img id="imgClima" alt="no funciona"/>
-      					<div id="var" class="valores">
-         					<div id="estado">Estado : parcialmente soliado </div>
-         					<div id="temp">Temp : </div>
-         					<div id="fecha">Fecha :</div>
-      					</div>
-   					</div>
-   					<div id="barra" class="barra">
-   						<!--barra del medio -->
-   					</div>
-   					<div id="alerta">
-   						<div id="titulo" class="titulo">Extendido del Clima</div>
-   						<div id="contenedor" class="contenedor">
-    						<center >
-        						<img id="imgEx" class="img" alt="nada" src="http://l.yimg.com/a/i/us/we/52/26.gif"/>
-        						<div id="diaEx">
-        							
-        						</div>
-        						<div class="tempMax">
-            						
-        						</div>
-        						<div class="tempMin">
-            						
-       		 					</div>
-    						</center>
-						</div>   
-   					</div>
-				</div>
-			</div>
-			
-			<div id="conteinerMapas">
-				
-				<div id="titulo1">Mapa de las Comunas</div>
-				<div id="map1">
-					<!--Aqui se carga el mapa -->
-				</div>
-				
-				<div id="titulo2">Mapa de las Zonas Inundables</div>
-				<div id="map2">
-					<!--Aqui se carga el mapa -->
-				</div>
-				
-				<div id="panel">
-					<div id="comunas" class="comuna">
-						<h5>Comunas</h5>
-						<label>
-							<select id="selectable">
-								<option id="op1">SELECCIONAR</option>
-							</select>
-						</label>
-					</div>
-						
-					<div id="listado" class="zonas">
-						<h5>Listado de Barrios</h5>
-						<li id="template"> </li>
-						<ul id="ul1">
-						</ul>
-					</div>
-				</div>
-				<div class="panelColores">
-					<div id="colorR" class="rojo"> </div>
-					<div class="rojoLetras">Mayor Anegamiento</div>
-					<div id="colorY" class="amarillo"> </div>
-					<div class="amarilloLetras">Manor anegamiento</div>
-				</div>
-			</div>			
-		</div>
-    </div>
+<body>
+  <div id="content">
+  	
+    <header>
+    	<div id="img"> </div>
+    	<div id="inferior"> </div>
+    </header>
     
-    <div id="dialog">
-    	<!-- aqui el PopUp -->
+    <div id="central">
+    	<div id="panel">
+    		<h3>Zonas de abnegamiento de la Ciudad de Buenos Aires</h3>
+      		<nav>
+      			<div class="titulos">
+      				<h5 class="tituloBarrios">Barrios de la Ciudad de Buenos Aires</h5>
+      				<h5 class="tituloClima">Clima Actual en la Ciudad</h5>
+      			</div>
+      			<div id="type" class="type">
+      				<input class="text" type="text" placeholder="Ingrese aqui su Barrio" />
+      			</div>
+      			<div class="climaActual" id="clima">
+      				
+      			</div>
+      		</nav>
+      		<h5 class="tituloMapa">Mapa de las zonas abnegadas</h5>
+      		<div id="map">
+      			
+      		</div>
+      		<div id="references">
+      			
+      		</div>
+    	</div>
     </div>
-    
+
     <footer>
-		<div>
-			<h3 style="color: yellow"> Copyright Pablo Taddei</h3>
-		</div>
+    	<div id="copy"><p>&copy; Copyright  by Pablo Taddei</p></div>
+    	<div id="pie"> </div>
     </footer>
-</div>
-
-  <!-- JavaScript at the bottom for fast page loading -->
-
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>-->
-
-
-  <!-- scripts concatenated and minified via ant build script-->
-  <script defer src="js/plugins.js"></script>
-  
-  <!-- end scripts-->
-
-	
-  <!-- Change UA-XXXXX-X to be your site's ID -->
-  <script>
-    window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
-    Modernizr.load({
-      load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-    });
-  </script>
-
-
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7 ]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
-  
+    
+  </div>
 </body>
 </html>

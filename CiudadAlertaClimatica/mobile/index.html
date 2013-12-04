@@ -1,63 +1,40 @@
 <!DOCTYPE html>
-<html>
-	<head>	
-		<link rel="stylesheet" href="../css/codiqa.ext.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>		
-		<script defer src="../js/script.js"></script>
-		<script src="../js/Mob.js"></script>
-        <title>Home</title>
-	</head>
-	<body>
-	    <div data-role="page" id="page1">
-			 <div data-role="header">
-				<h1>Zonas Inundables</h1>
-			 </div>
-			 <div data-role="content" id="conteinerMapas">
-				 <a href="#defaultpanel" data-role="button" data-inline="true" data-icon="bars">Menu</a>
-				 <div><h5 class="tituloComunas">Comunas</h5></div>
-				 <div id="map1">
-					<!--Aqui se carga el mapa de las comunas-->									
-				 </div>
-				 <div><h5 class="tituloZonas">Zonas de inundables</h5></div>
-				 <div id="map2">
-					<!-- Aqui se carga el mapa con las zonas de mayor inundacion-->	
-				 </div>	
-				 <div>
-				 	<div class="panelColores">
-					<div id="colorR" class="rojo"> </div>
-					<div class="rojoLetras">Mayor Anegamiento</div>
-					<div id="colorY" class="amarillo"> </div>
-					<div class="amarilloLetras">Manor anegamiento</div>
-				</div>	
-			 </div>
-			 
-			 	
-			 </div>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-			 <div data-role="panel" id="defaultpanel" data-theme="b">	
-				<div class="panel-content">
-					<h3>Comunas</h3>
-					<select id="selectable">
-						<option id="op1">SELECCIONAR</option>
-					</select>
-					<h3>Listado de Barrios</h3>
-					<li id="template"> </li>									
-					<ul id="ul1">
-					</ul>
-					<a href="#demo-links" data-rel="close" data-role="button" data-theme="c" data-icon="delete" data-inline="true">Close panel</a>
-				</div>
-			 </div>
-	    </div>
-	    <div id="ventana" class='ui-loader ui-overlay-shadow ui-body-b ui-corner-all'>
-	    	<div id="mensaje">
-	    		<!-- aqui va el popUp-->
-	    	</div>
-	    </div>"
-	      
-     </body>
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>index</title>
+  <meta name="description" content="">
+  <meta name="author" content="pablo">
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+  <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+
+<body>
+  <div>
+    <header>
+      <h1>index</h1>
+    </header>
+    <nav>
+      <p><a href="/">Home</a></p>
+      <p><a href="/contact">Contact</a></p>
+    </nav>
+
+    <div>
+      
+    </div>
+
+    <footer>
+     <p>&copy; Copyright  by pablo</p>
+    </footer>
+  </div>
+</body>
 </html>
