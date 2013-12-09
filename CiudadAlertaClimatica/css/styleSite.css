@@ -214,7 +214,7 @@ td { vertical-align: top; }
  div[id="content"]{
  	border:1px solid;
  	width:auto;
- 	height: 900px;;
+ 	height: 1100px;
  }
   
   
@@ -241,13 +241,13 @@ td { vertical-align: top; }
 div[id="central"]{
 	border:1px solid;
 	width: auto;
-	height: 700px;
+	height: 901px;
 }
 
 div[id="central"] div[id="panel"]{
 	border: 1px solid;
 	width: 860px;
-	height: 680px;
+	height: 881px;
 	margin:auto;
 	margin-top: 5px;
 	box-shadow: 0px 10px 5px #888888;
@@ -269,14 +269,14 @@ div[id="central"] div[id="panel"] nav{
 	width: 838px;
 	height: 140px;
 	margin-left: 10px;
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 
 div[id="central"] div[id="panel"] div[id="map"]{
-	border: 4px solid;
-	width: 838px;
-	height: 380px;
+	border: 3px solid;
+	width: 833px;
+	height: 530px;
 	margin-left: 10px;
 	margin-top: 10px;
 }
@@ -285,7 +285,7 @@ div[id="central"] div[id="panel"] div[id="map"]{
 div[id="central"] > div[id="panel"] > div[id="references"]{
 	border:1px solid;
 	width:700px;
-	height: 30px;
+	height: 40px;
 	margin:auto;
 	margin-top:2px;
 }
@@ -342,13 +342,13 @@ div[id="content"] > footer > div[id="pie"]{
 
 .tituloBarrios{
 	position: absolute;
-	top: 195px;
+	top: 220px;
 	left: 261px;
 }
 
 .tituloClima{
 	position: absolute;
-	top: 195px;
+	top: 218px;
 	left: 649px;
 }
 
@@ -356,8 +356,91 @@ div[id="content"] > footer > div[id="pie"]{
 	margin-left: 15px;
 }
 
+/*==================ESTILOS DEL TYPE-HEAD AL MOMENTO DE DESPLEGARSE==================================================*/
+  .ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 300px;
+  }
+
+
 
 /**==========================================================================*/
+
+#panel{
+	background-color: #FFFFFF;
+	filter: alpha(opacity=50);
+}
+
+
+#content{
+	background-image: url('../img/baires001.jpg');
+}
+
+
+
+#imgClima{
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+
+#var{
+	width: 300px;
+	position: absolute;
+	top: 255px;
+	left: 801px;
+	font-family: myFirstFont;
+	font-size: 125%;
+}
+
+
+#references{
+	font-size: 127%;
+}
+
+/*===============================ESTILOS DE LAS REFERENCIAS==============================================*/
+
+
+.rojo{
+	position:absolute;
+	width: 50px;
+	height: 15px;
+	background-color: red;
+	margin-left: 2px;
+	margin-top: 2px;
+}
+
+.amarillo{
+	position:absolute;
+	width: 50px;
+	height: 15px;
+	background-color: yellow;
+	margin-left: 2px;
+	margin-top: 2px;
+}
+
+
+.rojoLetras{
+	margin-left: 60px;
+}
+
+.amarilloLetras{
+	margin-left: 60px;
+}
+
+
+h5{
+	margin-left: 10px;
+	margin-top: 5px;
+}
 
 
 /* ==|== non-semantic helper classes ========================================

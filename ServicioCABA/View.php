@@ -12,9 +12,6 @@
 	}elseif($_GET['method'] == 'getzonas'){
 		$data = DataConnection::getInstance();
 		echo json_encode($data->getZonas());
-	}elseif($_GET['method'] == 'getNumComunas'){
-		$data = DataConnection::getInstance();
-		echo json_encode($data->getNumComuna());
 	}elseif($_GET['method'] == 'getBarriosComunas'){
 		$data = DataConnection::getInstance();
 		echo json_encode($data->getBarriosComunas());
@@ -25,22 +22,19 @@
 
 /*LLAMADAS POST*/
 
+
 	if($_POST['method'] == 'getComunas'){
 		$data = DataConnection::getInstance();
 		echo json_encode($data->getComunas());
 	}elseif($_POST['method'] == 'getzonas'){
 		$data = DataConnection::getInstance();
 		echo json_encode($data->getZonas());
-	}elseif($_POST['method'] == 'getNumComunas'){
-		$data = DataConnection::getInstance();
-		echo json_encode($data->getNumComuna());
 	}elseif($_POST['method'] == 'getBarriosComunas'){
 		$data = DataConnection::getInstance();
-		echo json_encode($data->getBarriosComunas($_POST['var']));
+		echo json_encode($data->getBarriosComunas());
 	}elseif($_POST['method'] == 'getZonasBarrios'){
 		$data = DataConnection::getInstance();
 		echo json_encode($data->getZonasBarrios($_POST['var']));
 	}
-
 
 ?>

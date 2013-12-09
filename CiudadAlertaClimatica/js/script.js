@@ -6,50 +6,21 @@
 var informacion = null;
 
 /**
- * Consumo del servicio que nos traera las
- * comunas. Cod-1002.
- * COD - 1002
- */
-function Comunas(servicesUrl,callback){
-	try{
-		var dataInfo;
-		var datos = {
-			"method":"getNumComunas"	
-		};
-			
-		$.ajax({
-			cache: false,
-			data : datos,
-			url : servicesUrl + '/ServicioCABA/View.php',
-			type :'post',
-			dataType:'json',
-			timeout: 5000,
-			success : function(data){
-				callback.call(this,data);
-			}
-		});
-	}catch(Error){
-		alert("Error : cod-1002" + Error);
-	}
-}
-
-/**
  * Consumo del servicio que nos traera la delimitacion de las
  * comunas y los barrios que la conforman. Cod-1003
  * @param idComuna
  * COD - 1003
  */
-function Barrios(ServicesUrl,idComuna,callback){
+function Barrios(ServicesUrl,callback){
 	try{
 		var datos = {
-			"method":"getBarriosComunas",
-			"var" : idComuna
+			"method":"getBarriosComunas"
 		};
 	
 		$.ajax({
 			cache: false,
 			data : datos,
-			url : ServicesUrl + '/ServicioCABA/View.php',
+			url : 'http://localhost/ServicioCABA/view.php',
 			type :'post',
 			dataType:'json',
 			timeout: 5000,
@@ -79,7 +50,7 @@ function ZonasInundables(ServicesUrl,barrio,callback){
 		$.ajax({
 			cache: false,
 			data : datos,
-			url : ServicesUrl +'/ServicioCABA/View.php',
+			url : 'http://localhost/ServicioCABA/view.php',
 			type :'post',
 			dataType:'json',
 			timeout: 5000,
