@@ -57,47 +57,80 @@ $(function(){
 	
 	$('#barrios').autocomplete({
 		source : function(request, response){
-			getConfiguracion(function(data){
-				var url = data.text();
-				Barrios(url,function(data){
-					response( $.map(data, function( item ) {
-						return { label : item.Barrio,long : item.Longitude,lat : item.Latitude}
-					}));
+			try{
+				getConfiguracion(function(data){
+					var url = data.text();
+					var datos = {
+						"method":"getBarriosComunas"
+					};
+					
+					$.ajax({
+						cache: false,
+						data : datos,
+						url : 'http://localhost/ServicioCABA/view.php',
+						type :'post',
+						dataType:'json',
+						timeout: 5000,
+						success : function(data){
+							response( $.map(data, function( item ) {
+								return { label : item.Barrio,long : item.Longitude,lat : item.Latitude}
+							}));
+						}
+					});
 				});
-			});
+			}catch(Error){
+				alert("No se a podido encontrar la informacion solicitada disculpe las molestias !");
+			}
 		},
 		select: function(event,ui){
+			try{
 				console.log(ui.item.label);
 			    var barrio = barrio_zonas(ui.item.label);
 			    console.log(barrio);
 			    var long = ui.item.long;
 			    var lat = ui.item.lat;
-				
-				getConfiguracion(function(data){
-					var url = data.text();
-					ZonasInundables(url,barrio,function(data){
-						if(data != null){
-							var cargar = Mapas.getSingleton();
-							cargar.setInit(lat, long);
-							arr = jQuery.map(data, function(item, i){
-								var afectacion = item.Afectacion;
-								var xml = item.Geomatry,
-								xmlDoc = $.parseXML( xml ),
-								$xml = $( xmlDoc ),
-								$title = $xml.find( "coordinates" );
-								var arrayLatLgn = $title.text().split('|||');
-								var dataArray = [];	
-								for (i = 0, l = arrayLatLgn.length; i < l; i +=1) {
-									dataArray[i] = arrayLatLgn[i].split(',');
-								}
-										
-								google.maps.event.addDomListener(window, 'load',marcarZonas_de_Inundacion(dataArray,afectacion));
-							});
-						}else{
-							getPopUp_Mensaje();
+			    
+			    getConfiguracion(function(data){
+			    	var url = data.text();
+					var datos = {
+						"method" :"getZonasBarrios",
+						"var" : barrio
+					};
+							
+					$.ajax({
+						cache: false,
+						data : datos,
+						url : 'http://localhost/ServicioCABA/view.php',
+						type :'post',
+						dataType:'json',
+						timeout: 5000,
+						success : function(data){
+							if(data != null){
+								var cargar = Mapas.getSingleton();
+								cargar.setInit(lat, long);
+								arr = jQuery.map(data, function(item, i){
+									var afectacion = item.Afectacion;
+									var xml = item.Geomatry,
+									xmlDoc = $.parseXML( xml ),
+									$xml = $( xmlDoc ),
+									$title = $xml.find( "coordinates" );
+									var arrayLatLgn = $title.text().split('|||');
+									var dataArray = [];	
+									for (i = 0, l = arrayLatLgn.length; i < l; i +=1) {
+										dataArray[i] = arrayLatLgn[i].split(',');
+									}	
+									google.maps.event.addDomListener(window, 'load',marcarZonas_de_Inundacion(dataArray,afectacion));
+								});
+							}else{
+								getPopUp_Mensaje();
+							}
 						}
 					});
-				});
+			    	
+			    });
+			}catch(Error){
+				alert("No se a podido encontrar la informacion solicitada disculpe las molestias !");
+			}
 		 }
 	});
 	
@@ -207,7 +240,7 @@ function cargarClima(){
 			 var cont = 0;
 			 var info = data.query.results.channel.item.condition;
 			 var info1 = data.query.results.channel.item.forecast;
-			 $(info1).each(function(index){
+			 /*$(info1).each(function(index){
 				 if(cont >= 1){
 					 var clone = $('#contenedor').clone();
 					 clone.removeAttr('id');
@@ -218,7 +251,7 @@ function cargarClima(){
 					 $('#alerta').append(clone); 
 				 }
 				 cont++;
-			 });
+			 });*/
 			 $('#imgClima').attr('src',"http://l.yimg.com/a/i/us/we/52/" + info.code + ".gif");
 			 $('#estado').text("Estado : " + info.text);
 			 $('#temp').text("Temp : " + info.temp);
@@ -251,6 +284,21 @@ function getPopUp_Mensaje(){
 
 
 
+/**
+ *Lectura del archivo de configuracion de la aplicacion
+ *lo que recuperamos es la ruta hacia el webservices
+ * @param callback
+ */
+function getConfiguracion(callback){
+	try{
+		$.post("configurations/webconfig.xml", function (xml) {
+			var hijo = $(xml).children();
+			callback.call(this,hijo);
+		});
+	}catch(Error){
+		alert("Error : Cod-1005" + Error);
+	}
+}
 
 
 
