@@ -53,7 +53,7 @@ $(function(){
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
 	$('#dialog').css('display','none');
-	$('#dialog').load('../404.html');
+	$('#dialog').load('404.html');
 	
 	$('#barrios').autocomplete({
 		source : function(request, response){
