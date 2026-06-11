@@ -26,7 +26,7 @@ export default function MapComponent() {
     <div className="map-container">
       <MapContainer
         center={initialPosition}
-        zoom={4}
+        zoom={13}
         scrollWheelZoom={true}
         className="map-content"
       >
