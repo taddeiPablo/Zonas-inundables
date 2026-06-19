@@ -157,7 +157,6 @@ app.get('/api/comunas', (req, res) => {
     total: comunas.length
   });
 });
-
 // GET /api/comunas/:id - Obtener una comuna por ID
 app.get('/api/comunas/:id', (req, res) => {
   const id = req.params.id;
@@ -175,7 +174,6 @@ app.get('/api/comunas/:id', (req, res) => {
     data: comuna
   });
 });
-
 // GET /api/comunas/barrio/:nombre - Buscar por nombre de barrio
 app.get('/api/comunas/barrio/:nombre', (req, res) => {
   const nombre = req.params.nombre.toUpperCase();
@@ -189,7 +187,6 @@ app.get('/api/comunas/barrio/:nombre', (req, res) => {
     total: resultados.length
   });
 });
-
 // GET /api/comunas/area/mayor - Comunas con mayor área
 app.get('/api/comunas/area/mayor', (req, res) => {
   const limit = req.query.limit || 5;
