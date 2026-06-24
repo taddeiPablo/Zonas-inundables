@@ -17,7 +17,7 @@ function App() {
         <ZonasBot onData={handleBotData} />
       </main>
       <footer className="app-footer">
-        <p>&copy; 2024 Zonas Inundables. Todos los derechos reservados.</p>
+        <p>&copy; Pablo Taddei - 2026 Zonas Inundables. Todos los derechos reservados.</p>
       </footer>
     </div>
   )
