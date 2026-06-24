@@ -262,7 +262,6 @@ export default function MapComponent({ mapData, onClear }) {
 
   return (
     <div className="map-container" style={{ position: 'relative' }}>
-
       {badgeLabel && (
         <div style={styles.badge}>
           <span>{badgeLabel}</span>
